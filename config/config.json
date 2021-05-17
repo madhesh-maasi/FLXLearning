@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "flx-learning-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/flxLearning/FlxLearningWebPart.js",
+          "manifest": "./src/webparts/flxLearning/FlxLearningWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "FlxLearningWebPartStrings": "lib/webparts/flxLearning/loc/{locale}.js"
+  }
+}
