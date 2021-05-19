@@ -2,7 +2,6 @@
 logs
 *.log
 npm-debug.log*
-local
 
 # Dependency directories
 node_modules
