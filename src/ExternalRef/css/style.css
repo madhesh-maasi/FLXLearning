@@ -47,3 +47,104 @@
   font-family: "Roboto", sans-serif;
   color: #011e41;
 }
+.editimageflxLearn{
+  background: url(../images/editlearn.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 1.1rem;
+  height: 1.1rem;
+  right: -5px;
+  top: -6px;
+  position: absolute;
+  display: inline-block;
+}
+.iconaddlearn {
+  position: relative;
+}
+.remove_underline_flxLearn {
+  text-decoration: none;
+  cursor: default;
+}
+button.btn.btn-theme {
+  color: #fff;
+  background: #011e41;
+  padding: .24rem 1rem;
+}
+/* .addiconlearn{
+  position: relative;
+}
+.addiconflxlearn{
+  background: url(../images/addlearn.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: -21px;
+    left: 9px;
+    width: 1.1rem;
+    height: 1.1rem;
+    position: absolute;
+    display: inline-block;
+} */
+.modal-tile-header{
+  border-bottom: 0!important;
+}
+.modal-tile-footer
+{
+border-top: 0 !important;
+}
+.btn-border-flexlearn{
+  border: 1px solid #011e41!important;
+    color: #011e41!important;
+    background: #fff!important;
+    padding: .24rem 1rem!important;
+}
+
+.btn-border-flexlearn:hover{
+  background-color: #011e41!important;
+  color: #fff!important;
+}
+.modalbody-flexlearn{
+  padding-top: 1px;
+}
+.modallearn-color{
+  font-weight: 700!important;
+  color:#011e41!important;
+}
+/* .custom-life-learn{
+  background-color:#011e41!important ;
+  color: #fff;
+} */
+input[type=file]::file-selector-button {
+  /* border: 2px solid #6c5ce7; */
+  /* padding: .2em .3rem; */
+  padding-right: 0.9rem ;
+  padding-left: 0.9rem;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius:3px;
+  background-color:#011e41;
+  color: #fff;
+
+}
+.learning-modal-dialog{
+  max-width: 40rem!important;
+}
+label.btn.btn-learn-outline-theme {
+  padding: .375rem .75rem!important;
+}
+ 
+
+.learning-modal-dialog .btn-learn-outline-theme{
+  border-color: #011e41!important;
+  color: #011e41!important;
+
+}
+
+.learning-modal-dialog  .btn-check:checked {
+  color: #fff!important;
+  background-color: #011e41!important;
+
+}
+.learning-modal-dialog  .btn-check:active{
+  color: #011e41!important;
+    background-color: #fff!important;
+}
