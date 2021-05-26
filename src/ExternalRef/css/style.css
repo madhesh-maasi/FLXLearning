@@ -20,47 +20,49 @@
   max-width: 100% !important;
 }
 
-.ToolbarButtonTooltip {
+/* .ToolbarButtonTooltip {
   display: none;
-}
+} */
 
 .Canvas {
   margin: 0 !important;
 }
 /* !workbench */
 .q-link {
-  width: 8.5rem;
-  min-height: 9.5rem;
-  background: #f5f9ff;
+  width: 10rem;
+  min-height: 11.5rem;
+  /* background: #f5f9ff; */
+  background: #fff;
   font-family: "Roboto", sans-serif;
-  box-shadow: -1px 4px 12px -3px rgba(0, 0, 0, 0.52);
+  /* box-shadow: -1px 4px 12px -3px rgba(0, 0, 0, 0.52);
   -webkit-box-shadow: -1px 4px 12px -3px rgba(0, 0, 0, 0.52);
-  -moz-box-shadow: -1px 4px 12px -3px rgba(0, 0, 0, 0.52);
+  -moz-box-shadow: -1px 4px 12px -3px rgba(0, 0, 0, 0.52); */
 }
 .q-link-img {
   width: 3rem;
   height: 3rem;
-  margin: 1rem;
+  margin: 0.2rem 1rem 1rem 1rem;
 }
 .q-link-title {
   font-size: 1rem;
   font-family: "Roboto", sans-serif;
   color: #011e41;
 }
-.editimageflxLearn{
-  background: url(../images/editlearn.png);
+.editimageflxLearn {
+  background: url(../images/EditPencil.png);
   background-repeat: no-repeat;
   background-size: contain;
   width: 1.1rem;
   height: 1.1rem;
   right: -5px;
   top: -6px;
-  position: absolute;
+  /* position: absolute; */
   display: inline-block;
+  cursor: pointer;
 }
-.iconaddlearn {
+/* .iconaddlearn {
   position: relative;
-}
+} */
 .remove_underline_flxLearn {
   text-decoration: none;
   cursor: default;
@@ -68,7 +70,7 @@
 button.btn.btn-theme {
   color: #fff;
   background: #011e41;
-  padding: .24rem 1rem;
+  padding: 0.24rem 1rem;
 }
 /* .addiconlearn{
   position: relative;
@@ -84,56 +86,50 @@ button.btn.btn-theme {
     position: absolute;
     display: inline-block;
 } */
-.modal-tile-header{
-  border-bottom: 0!important;
+.modal-tile-header {
+  border-bottom: 0 !important;
 }
-.modal-tile-footer
-{
-border-top: 0 !important;
+.modal-tile-footer {
+  border-top: 0 !important;
 }
-.btn-border-flexlearn{
-  border: 1px solid #011e41!important;
-    color: #011e41!important;
-    background: #fff!important;
-    padding: .24rem 1rem!important;
+.btn-border-flexlearn {
+  border: 1px solid #011e41 !important;
+  color: #011e41 !important;
+  background: #fff !important;
+  padding: 0.24rem 1rem !important;
 }
 
-.btn-border-flexlearn:hover{
-  background-color: #011e41!important;
-  color: #fff!important;
+.btn-border-flexlearn:hover {
+  background-color: #011e41 !important;
+  color: #fff !important;
 }
-.modalbody-flexlearn{
+.modalbody-flexlearn {
   padding-top: 1px;
 }
-.modallearn-color{
-  font-weight: 700!important;
-  color:#011e41!important;
+.modallearn-color {
+  font-weight: 700 !important;
+  color: #011e41 !important;
 }
-/* .custom-life-learn{
-  background-color:#011e41!important ;
-  color: #fff;
-} */
-input[type=file]::file-selector-button {
-  /* border: 2px solid #6c5ce7; */
-  /* padding: .2em .3rem; */
-  padding-right: 0.9rem ;
+
+/* input[type="file"]::file-selector-button { */
+/* border: 2px solid #6c5ce7; */
+/* padding: .2em .3rem; */
+/* padding-right: 0.9rem;
   padding-left: 0.9rem;
   padding-top: 1px;
   padding-bottom: 1px;
-  border-radius:3px;
-  background-color:#011e41;
+  border-radius: 3px;
+  background-color: #011e41;
   color: #fff;
-
-}
-.learning-modal-dialog{
-  max-width: 40rem!important;
+} */
+.learning-modal-dialog {
+  max-width: 40rem !important;
 }
 label.btn.btn-learn-outline-theme {
-  padding: .375rem .75rem!important;
+  padding: 0.375rem 0.75rem !important;
 }
- 
 
-.learning-modal-dialog .btn-learn-outline-theme{
+/* .learning-modal-dialog .btn-learn-outline-theme{
   border-color: #011e41!important;
   color: #011e41!important;
 
@@ -145,6 +141,130 @@ label.btn.btn-learn-outline-theme {
 
 }
 .learning-modal-dialog  .btn-check:active{
-  color: #011e41!important;
+    color: #011e41!important;
     background-color: #fff!important;
+} */
+.btn-outline-theme {
+  color: #011e41 !important;
+  border-color: #011e41 !important;
+}
+.learning-modal-dialog .btn-check:active + .btn-outline-theme,
+.learning-modal-dialog .btn-check:checked + .btn-outline-theme {
+  color: #fff !important;
+  background-color: #011e41 !important;
+  border-color: #011e41 !important;
+}
+.custom-life-learn::-webkit-file-upload-button {
+  color: #fff !important;
+  background-color: #011e41 !important;
+  padding: 0.24rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  outline: none;
+  cursor: pointer;
+}
+.Learning-delete-warning-dialog {
+  max-width: 20rem !important;
+}
+.Learning-delete-warning:before {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  content: "";
+  background: url(../images/AlertWarning.png);
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  top: -0.2rem;
+  left: 43%;
+}
+.modal-footer {
+  border-top: 0 !important;
+}
+.modal-header {
+  border-bottom: 0 !important;
+}
+.ajs-header {
+  padding-top: 5rem !important;
+  text-align: center;
+  padding-bottom: 0 !important;
+}
+.ajs-content {
+  text-align: center;
+}
+.alertfy-success {
+  position: relative;
+}
+.alertfy-success::before {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  content: "";
+  background: url(../images/AlertConfirm.png);
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  top: -90px;
+  left: 42%;
+}
+.alertify .ajs-dialog {
+  max-width: 20rem !important;
+}
+.alertify .ajs-footer .ajs-buttons.ajs-primary {
+  text-align: center !important;
+  margin-bottom: 0.5rem;
+}
+button.ajs-button.ajs-ok {
+  background: #011e41 !important;
+  color: #fff !important;
+  border: 0 !important;
+  border-radius: 4px !important;
+}
+.ajs-content {
+  padding-top: 6px !important;
+}
+.learn-add-icon {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background: url(../images/LearningAddBlue.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.learn-add-font {
+  color: #011e41;
+  font-size: 1rem;
+}
+.learning-add-section {
+  border-radius: 4px;
+}
+.learning-add-section:hover {
+  background: #011e41;
+  cursor: pointer;
+}
+.learning-add-section:hover .learn-add-icon {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background: url(../images/LearningAddWhite.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.learning-add-section:hover .learn-add-font {
+  color: #fff;
+  font-size: 1rem;
+}
+.learning-add-section {
+  border: 1px solid #011e41;
+}
+.q-link a {
+  text-decoration: none;
+}
+.flx-learning-section {
+  min-height: 100vh;
+}
+.learning-modal-dialog .modal-body {
+  padding: 1rem 2rem !important;
 }
