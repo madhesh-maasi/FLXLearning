@@ -247,7 +247,7 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
     </div>
     </div>
   </div>
-</div>
+</div>  
 
 
 
@@ -378,13 +378,13 @@ list.get().then(l => {
       } 
 
       if(items.length>=0){
-        html+=`<div class="card text-center" style="width: 9rem; height:10.5rem ;border-radius:0">
+        html+=`<div class="card text-center m-2" style="width: 9rem; height:10.5rem ;border-radius:0">
         <div class="card-body my-4">
         <span class="learn-add-icon" data-bs-toggle="modal" data-bs-target="#staticBackdroptwo"></span>
         <p class="learn-title my-2">Add Link</p>
         </div>
       </div>`
-      }
+      }   
 
 
       var element = document.getElementById("learnedit");
