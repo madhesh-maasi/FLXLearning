@@ -29,14 +29,15 @@
 }
 /* !workbench */
 .q-link {
-  width: 10rem;
-  min-height: 11.5rem;
-  /* background: #f5f9ff; */
-  background: #fff;
+  width: 9rem;
+  min-height: 10.5rem;
+  background: #ffff; 
+  /* background: #fff; */
+  border-radius: 0;
   font-family: "Roboto", sans-serif;
-  /* box-shadow: -1px 4px 12px -3px rgba(0, 0, 0, 0.52);
+   box-shadow: -1px 4px 12px -3px rgba(0, 0, 0, 0.52);
   -webkit-box-shadow: -1px 4px 12px -3px rgba(0, 0, 0, 0.52);
-  -moz-box-shadow: -1px 4px 12px -3px rgba(0, 0, 0, 0.52); */
+  -moz-box-shadow: -1px 4px 12px -3px rgba(0, 0, 0, 0.52);
 }
 .q-link-img {
   width: 3rem;
@@ -47,6 +48,7 @@
   font-size: 1rem;
   font-family: "Roboto", sans-serif;
   color: #011e41;
+  font-weight: 700;
 }
 .editimageflxLearn {
   background: url(../images/EditPencil.png);
@@ -147,19 +149,21 @@ label.btn.btn-learn-outline-theme {
 .btn-outline-theme {
   color: #011e41 !important;
   border-color: #011e41 !important;
+  border-radius: 0;
 }
 .learning-modal-dialog .btn-check:active + .btn-outline-theme,
 .learning-modal-dialog .btn-check:checked + .btn-outline-theme {
   color: #fff !important;
   background-color: #011e41 !important;
   border-color: #011e41 !important;
+  border-radius: 0;
 }
 .custom-life-learn::-webkit-file-upload-button {
   color: #fff !important;
   background-color: #011e41 !important;
   padding: 0.24rem 1rem;
   border: none;
-  border-radius: 0.25rem;
+  border-radius: 0;
   outline: none;
   cursor: pointer;
 }
@@ -218,20 +222,12 @@ button.ajs-button.ajs-ok {
   background: #011e41 !important;
   color: #fff !important;
   border: 0 !important;
-  border-radius: 4px !important;
+  border-radius: 0px !important;
 }
 .ajs-content {
   padding-top: 6px !important;
 }
-.learn-add-icon {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  background: url(../images/LearningAddBlue.png);
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+
 .learn-add-font {
   color: #011e41;
   font-size: 1rem;
@@ -243,7 +239,7 @@ button.ajs-button.ajs-ok {
   background: #011e41;
   cursor: pointer;
 }
-.learning-add-section:hover .learn-add-icon {
+/* .learning-add-section:hover .learn-add-icon {
   display: inline-block;
   width: 1rem;
   height: 1rem;
@@ -251,7 +247,7 @@ button.ajs-button.ajs-ok {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-}
+} */
 .learning-add-section:hover .learn-add-font {
   color: #fff;
   font-size: 1rem;
@@ -267,4 +263,30 @@ button.ajs-button.ajs-ok {
 }
 .learning-modal-dialog .modal-body {
   padding: 1rem 2rem !important;
+}
+/* .add-link{
+  width: 9rem;
+  min-height: 10.5rem;
+  background: #ffff; 
+   background: #fff; 
+  font-family: "Roboto", sans-serif;
+   box-shadow: -1px 4px 12px -3px rgba(0, 0, 0, 0.52);
+  -webkit-box-shadow: -1px 4px 12px -3px rgba(0, 0, 0, 0.52);
+  -moz-box-shadow: -1px 4px 12px -3px rgba(0, 0, 0, 0.52);
+} */
+.learn-add-icon {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  background: url(../images/addlightblue.png) ;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  
+}
+.learn-title{
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  color: #011e41;
+  font-weight: 550;
 }

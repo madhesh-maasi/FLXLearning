@@ -50,10 +50,7 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
     this.domElement.innerHTML = `   
 
    <div class="flx-learning-section">
-   <div class="btn-sectionflxlearn mx-2 my-1 d-flex justify-content-end">        
-   <!--<button class="btn btn-border-flexlearn" data-bs-toggle="modal" data-bs-target="#staticBackdroptwo">Add</button>-->
-   <div class="learning-add-section d-flex align-items-center px-3 py-1"   data-bs-toggle="modal" data-bs-target="#staticBackdroptwo"><span class="learn-add-icon me-2"></span><div class="learn-add-font">Add</div></div>
-   </div>
+             
    <!-- <div class="addiconlearn"> 
    <span class="addiconflxlearn"data-bs-toggle="modal" data-bs-target="#staticBackdroptwo" ></span></div> -->
    <div class="learning-section d-flex flex-wrap" id="learnedit" >
@@ -80,17 +77,24 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
    <img class="q-link-img" src="https://media-exp1.licdn.com/dms/image/C5603AQG1sCX4C8uhCg/profile-displayphoto-shrink_800_800/0/1615561085905?e=1626307200&v=beta&t=SbQf_3OwRf5JSfMqg9fXLYvIwcfYWOLKl_lmJGr4qSE" alt="img"/>
    <div class="q-link-title">Education</div>
    </div>-->
+   
   
    </div>
+   
+   </div>  
+   <div class="card text-center" style="width: 9rem; height:10.5rem ;border-radius:0">
+   <div class="card-body my-4">
+   <span class="learn-add-icon" data-bs-toggle="modal" data-bs-target="#staticBackdroptwo"></span>
+   <p class="learn-title my-2">Add Link</p>
    </div>
-                                          
-                                                                     
-
-                                                 <!-- Modal -->
+ </div> 
+                                            
+                                                      
+                                               <!-- Modal -->
 
 <div class="modal fade" id="staticBackdropone" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog learning-modal-dialog ">
-    <div class="modal-content">  
+    <div class="modal-content rounded-0">  
       <div class="modal-header modal-tile-header">   
         <h5 class="modal-title w-100 text-center modallearn-color" id="staticBackdropLabel"> Edit Link </h5>
      <!--   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
@@ -99,21 +103,21 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
       
       <div class="modal-body  modalbody-flexlearn">
       <div class="row align-items-center my-3"><div class="col-4">Title</div><div class="col-1">:</div><div class="col-7">
-      <input type="text" class="form-control" id="TitleFLXlearning" aria-describedby=""></div></div>
+      <input type="text" class="form-control rounded-0" id="TitleFLXlearning" aria-describedby=""></div></div>
       <div class="row align-items-center my-3"><div class="col-4">URL</div><div class="col-1">:</div><div class="col-7">
-      <input type="text" class="form-control" id="URLFLXlearning" value="" aria-describedby=""></div></div>
+      <input type="text" class="form-control rounded-0" id="URLFLXlearning" value="" aria-describedby=""></div></div>
 
      <!-- <div class="row align-items-center my-3"><div class="col-4">OpeningNewTab</div>
       <div class="col-1">:</div><div class="col-7">
       <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="Yes" id="checkboxopenewtabFLXlearning">
+  <input class="form-check-input rounded" type="checkbox" value="Yes" id="checkboxopenewtabFLXlearning">
  
 </div></div></div>                               
       
      
       <div class="row align-items-center my-3"><div class="col-4">Visible</div><div class="col-1">:</div><div class="col-7 custom-arrow">
       <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="Yes" id="checkboxvisibleFLXlearning">
+  <input class="form-check-input rounded-0" type="checkbox" value="Yes" id="checkboxvisibleFLXlearning">
   
 </div></div></div>  -->
 
@@ -147,23 +151,24 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
       
     <div class="modal-footer  modal-tile-footer justify-content-between"> 
     <div class="btns-left">
-    <button type="button" class="btn btn-sm btn-danger" id="learningDeleteModal"  style="" data-bs-toggle="modal" data-bs-target="#LearningDeleteModal">Delete</button>
+    <button type="button" class="btn btn-sm btn-danger rounded-0" id="learningDeleteModal"  style="" data-bs-toggle="modal" data-bs-target="#LearningDeleteModal">Delete</button>
     </div>
 
       <div class="btns-right d-flex">
       <div class="addScreen">
-      <button type="button" class="btn btn-sm btn-secondary" id="btnLearningEditClose" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-sm btn-theme" id="btnmodalSubmit" style="display: none;">Submit</button>
+      <button type="button" class="btn btn-sm btn-secondary rounded-0" id="btnLearningEditClose" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-sm btn-theme rounded-0" id="btnmodalSubmit" style="display: none;">Submit</button>
       </div>
       <div class="viewScreen">
       <!--<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>-->
-      <button type="button" class="btn btn-sm btn-theme ms-2" id="btnUpdateLearn" style="">Update</button>
+      <button type="button" class="btn btn-sm btn-theme ms-2 rounded-0" id="btnUpdateLearn" style="">Update</button>
       </div>
       </div>
     </div>
     </div>
   </div>
-</div>
+  
+</div>  
 
 
 
@@ -174,7 +179,7 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
 
 <div class="modal fade" id="staticBackdroptwo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog  learning-modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content rounded-0">
       <div class="modal-header  modal-tile-header ">
         <h5 class="modal-title w-100 text-center modallearn-color" id="staticBackdropLabel">Add Link</h5>
         <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
@@ -182,8 +187,8 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
        
       
       <div class="modal-body">
-      <div class="row align-items-center my-3"><div class="col-4">Title</div><div class="col-1">:</div><div class="col-7"><input type="text" class="form-control" id="TitleFlXlearn" aria-describedby=""></div></div>
-      <div class="row align-items-center my-3"><div class="col-4">URL</div><div class="col-1">:</div><div class="col-7"><input type="text" class="form-control" id="URLFlXlearn" value="" aria-describedby=""></div></div>
+      <div class="row align-items-center my-3"><div class="col-4">Title</div><div class="col-1">:</div><div class="col-7"><input type="text" class="form-control rounded-0" id="TitleFlXlearn" aria-describedby=""></div></div>
+      <div class="row align-items-center my-3"><div class="col-4">URL</div><div class="col-1">:</div><div class="col-7"><input type="text" class="form-control rounded-0" id="URLFlXlearn" value="" aria-describedby=""></div></div>
 
      <!-- <div class="row align-items-center my-3"><div class="col-4">OpeningNewTab</div><div class="col-1">:</div>
       <div class="col-7">
@@ -226,17 +231,17 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
       
     <div class="modal-footer modal-tile-footer justify-content-between"> 
     <div class="btns-left">
-    <button type="button" class="btn btn-sm btn-danger" id="" style="display: none;" data-bs-toggle="modal" data-bs-target="#deleteAlterModal">Delete</button>
+    <button type="button" class="btn btn-sm btn-danger rounded-0" id="" style="display: none;" data-bs-toggle="modal" data-bs-target="#deleteAlterModal">Delete</button>
     </div>
 
       <div class="btns-right d-flex">
       <div class="addScreen">
-      <button type="button" class="btn btn-sm btn-secondary" id="btnLearningAddClose" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-sm btn-theme" id="btnmodalSubmit" style="display: none;">Submit</button>
+      <button type="button" class="btn btn-sm btn-secondary rounded-0" id="btnLearningAddClose" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-sm btn-theme rounded-0" id="btnmodalSubmit" style="display: none;">Submit</button>
       </div>
       <div class="viewScreen">
       <!--<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>-->
-      <button type="button" class="btn btn-sm btn-theme ms-2" id="btnSubmitLearnFLXLearn" style="">Submit</button>
+      <button type="button" class="btn btn-sm btn-theme ms-2 rounded-0" id="btnSubmitLearnFLXLearn" style="">Submit</button>
       </div>
       </div>
     </div>
@@ -252,7 +257,7 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
 
     <div class="modal fade" id="LearningDeleteModal" tabindex="-1" aria-labelledby="AnADeleteModalLabel" aria-hidden="true">
   <div class="modal-dialog Learning-delete-warning-dialog">
-    <div class="modal-content">
+    <div class="modal-content rounded-0">
       <div class="modal-header">
          
         <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
@@ -262,8 +267,8 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
       <p class="mb-0">Are you sure want to Delete?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" id="cancelLearningDelete" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">No</button>
-        <button type="button" id="btnDeleteLearn" class="btn btn-sm btn-danger">Yes</button>
+        <button type="button" id="cancelLearningDelete" class="btn btn-sm btn-secondary rounded-0" data-bs-dismiss="modal">No</button>
+        <button type="button" id="btnDeleteLearn" class="btn btn-sm btn-danger rounded-0">Yes</button>
       </div>
     </div>
   </div>
