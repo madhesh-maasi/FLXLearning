@@ -82,12 +82,12 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
    </div>
    
    </div>  
-   <div class="card text-center" style="width: 9rem; height:10.5rem ;border-radius:0">
+   <!--<div class="card text-center" style="width: 9rem; height:10.5rem ;border-radius:0">
    <div class="card-body my-4">
    <span class="learn-add-icon" data-bs-toggle="modal" data-bs-target="#staticBackdroptwo"></span>
    <p class="learn-title my-2">Add Link</p>
    </div>
- </div> 
+ </div>-->
                                             
                                                       
                                                <!-- Modal -->
@@ -280,10 +280,10 @@ FetchFLXLearning();
     
 
 $("#learningDeleteModal").click(()=>{
-  $(".learning-modal-dialog").hide()
+  $(".learning-modal-dialog").hide();
 })
-$("#cancelLearningDelete , #LearningDeleteModal").click(()=>{
-  $(".learning-modal-dialog").show()
+$("#cancelLearningDelete").click(()=>{
+  $(".learning-modal-dialog").show();
 })
 $(document).on('click','.editimageflxLearn',function(e){
   e.currentTarget.getAttribute("data-id");
@@ -375,8 +375,17 @@ list.get().then(l => {
             <a href="${item.URL}"><img class="q-link-img" src="${serverUrl}${imageUrl}" alt="img"/></a><a class="" href="${item.URL}">
             <div class="q-link-title ">${item.Title}</div></a></div>`
         }
-
       } 
+
+      if(items.length>=0){
+        html+=`<div class="card text-center" style="width: 9rem; height:10.5rem ;border-radius:0">
+        <div class="card-body my-4">
+        <span class="learn-add-icon" data-bs-toggle="modal" data-bs-target="#staticBackdroptwo"></span>
+        <p class="learn-title my-2">Add Link</p>
+        </div>
+      </div>`
+      }
+
 
       var element = document.getElementById("learnedit");
       element.innerHTML = html;
