@@ -310,7 +310,7 @@ $("#btnUpdateLearn").click(function(){
       $("#LearningEditFile").show()
     }
   })
-  }
+  }  
 
   
 
@@ -360,7 +360,7 @@ list.get().then(l => {
         const itemImage = JSON.parse(item.Image) || {};
         const serverUrl = itemImage.serverUrl || "";
         const imageUrl = itemImage.serverRelativeUrl || "";
-        
+          
         if (item.OpeningNewTab === true) {
           html += `<div class = "q-link m-2 text-center p-2"><div class="iconaddlearn text-end py-1 px-2">
             <span class="editimageflxLearn" data-bs-toggle="modal" data-bs-target="#staticBackdropone" data-id ="${item.ID}"></span></div>
@@ -375,10 +375,10 @@ list.get().then(l => {
             <a href="${item.URL}"><img class="q-link-img" src="${serverUrl}${imageUrl}" alt="img"/></a><a class="" href="${item.URL}">
             <div class="q-link-title ">${item.Title}</div></a></div>`
         }
-      } 
+      }   
 
       if(items.length>=0){
-        html+=`<div class="card text-center m-2" style="width: 9rem; height:10.5rem ;border-radius:0">
+        html+=`<div class="card text-center flxlearncursor m-2" style="width: 9rem; height:10.5rem ;border-radius:0">
         <div class="card-body my-4">
         <span class="learn-add-icon" data-bs-toggle="modal" data-bs-target="#staticBackdroptwo"></span>
         <p class="learn-title my-2">Add Link</p>
