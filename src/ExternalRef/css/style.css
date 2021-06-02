@@ -293,3 +293,7 @@ button.ajs-button.ajs-ok {
 .flxlearncursor p{
   cursor: pointer;
 }
+
+.flxlearncursor .learn-add-icon {
+  cursor: pointer;
+}
