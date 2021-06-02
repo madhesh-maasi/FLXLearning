@@ -259,7 +259,7 @@ button.ajs-button.ajs-ok {
   text-decoration: none;
 }
 .flx-learning-section {
-  min-height: 100vh;
+  min-height: 72.3vh; 
 }
 .learning-modal-dialog .modal-body {
   padding: 1rem 2rem !important;

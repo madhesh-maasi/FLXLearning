@@ -374,7 +374,7 @@ list.get().then(l => {
           </div>
             <a href="${item.URL}"><img class="q-link-img" src="${serverUrl}${imageUrl}" alt="img"/></a><a class="" href="${item.URL}">
             <div class="q-link-title ">${item.Title}</div></a></div>`
-        }     
+        }             
       }   
 
       if(items.length>=0){
