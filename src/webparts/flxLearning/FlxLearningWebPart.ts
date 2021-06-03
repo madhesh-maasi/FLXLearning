@@ -374,13 +374,13 @@ list.get().then(l => {
           </div>
             <a href="${item.URL}"><img class="q-link-img" src="${serverUrl}${imageUrl}" alt="img"/></a><a class="" href="${item.URL}">
             <div class="q-link-title ">${item.Title}</div></a></div>`
-        }
+        }             
       }   
 
       if(items.length>=0){
         html+=`<div class="card text-center flxlearncursor m-2" style="width: 9rem; height:10.5rem ;border-radius:0">
         <div class="card-body my-4">
-        <span class="learn-add-icon" data-bs-toggle="modal" data-bs-target="#staticBackdroptwo"></span>
+        <span class="learn-add-icon " data-bs-toggle="modal" data-bs-target="#staticBackdroptwo"></span>
         <p class="learn-title my-2">Add Link</p>
         </div>
       </div>`

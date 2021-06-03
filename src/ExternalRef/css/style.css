@@ -259,7 +259,7 @@ button.ajs-button.ajs-ok {
   text-decoration: none;
 }
 .flx-learning-section {
-  min-height: 100vh;
+  min-height: 72.3vh; 
 }
 .learning-modal-dialog .modal-body {
   padding: 1rem 2rem !important;
@@ -291,5 +291,9 @@ button.ajs-button.ajs-ok {
   font-weight: 500;
 }
 .flxlearncursor p{
+  cursor: pointer;
+}
+
+.flxlearncursor .learn-add-icon {
   cursor: pointer;
 }
