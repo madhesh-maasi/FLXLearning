@@ -25,6 +25,7 @@ var alertify: any = require("../../ExternalRef/js/alertify.min.js");
  let LGUID = "";
  let SiteName = "";
  let SelectedImage = "";
+ var width="",height="",widthedit="",heightedit="";
 export interface IFlxLearningWebPartProps {
   description: string;
 }
@@ -104,7 +105,7 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
       <div class="modal-body  modalbody-flexlearn">
       <div class="row align-items-center my-3"><div class="col-4">Title</div><div class="col-1">:</div><div class="col-7">
       <input type="text" class="form-control rounded-0" id="TitleFLXlearning" aria-describedby=""></div></div>
-      <div class="row align-items-center my-3"><div class="col-4">URL</div><div class="col-1">:</div><div class="col-7">
+      <div class="row align-items-center my-3"><div class="col-4">Url</div><div class="col-1">:</div><div class="col-7">
       <input type="text" class="form-control rounded-0" id="URLFLXlearning" value="" aria-describedby=""></div></div>
 
      <!-- <div class="row align-items-center my-3"><div class="col-4">OpeningNewTab</div>
@@ -121,7 +122,7 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
   
 </div></div></div>  -->
 
-<div class="row align-items-center my-3"><div class="col-4">Document Link</div><div class="col-1">:</div>
+<div class="row align-items-center my-3"><div class="col-4">Url Properties</div><div class="col-1">:</div>
 <div class="col-7">
 <div class="btn-group option-checkboxes w-100" role="group" aria-label="Basic checkbox toggle button group">
 
@@ -143,6 +144,7 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
 </div>
       <div class="row align-items-start my-3"><div class="col-4">Image</div><div class="col-1">:</div><div class="col-7">
        <input type="file" class="form-control-file custom-life-learn" class="mt-1" id="File1FLXlearnEdit" accept="image/*">
+       <div id="LearningUpdateFileEmpty"></div>
        <div id="LearningEditFile"></div>
        </div></div>
     </div>
@@ -188,7 +190,7 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
       
       <div class="modal-body">
       <div class="row align-items-center my-3"><div class="col-4">Title</div><div class="col-1">:</div><div class="col-7"><input type="text" class="form-control rounded-0" id="TitleFlXlearn" aria-describedby=""></div></div>
-      <div class="row align-items-center my-3"><div class="col-4">URL</div><div class="col-1">:</div><div class="col-7"><input type="text" class="form-control rounded-0" id="URLFlXlearn" value="" aria-describedby=""></div></div>
+      <div class="row align-items-center my-3"><div class="col-4">Url</div><div class="col-1">:</div><div class="col-7"><input type="text" class="form-control rounded-0" id="URLFlXlearn" value="" aria-describedby=""></div></div>
 
      <!-- <div class="row align-items-center my-3"><div class="col-4">OpeningNewTab</div><div class="col-1">:</div>
       <div class="col-7">
@@ -203,7 +205,7 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
   <input class="form-check-input" type="checkbox" value="Yes" id="checkboxvisibleFlXlearn">
   
 </div></div></div> -->
-<div class="row align-items-center my-3"><div class="col-4">Document Link</div><div class="col-1">:</div>
+<div class="row align-items-center my-3"><div class="col-4">Url Properties</div><div class="col-1">:</div>
 <div class="col-7 ">
 <div class="btn-group option-checkboxes w-100" role="group" aria-label="Basic checkbox toggle button group">
 
@@ -303,14 +305,43 @@ $("#btnUpdateLearn").click(function(){
   //   AddFLXLearning();
   // })
   $("#btnSubmitLearnFLXLearn").click(()=>{AddFLXLearning();})
+ 
   $(document).on("change", "#File1FLXlearnEdit", function () {
+    var _URL = window.URL;
+    var file, img;
+    if ((file = this.files[0])) {
+        img = new Image();
+        img.onload = function () {
+            //alert("Width:" + this.width + "   Height: " + this.height);
+            widthedit=this.width;
+            heightedit=this.height;
+            };
+            img.src = _URL.createObjectURL(file);
+    }
+
     if($("#File1FLXlearnEdit").prop('files').length > 0){
       $("#LearningEditFile").hide()
     }else{
       $("#LearningEditFile").show()
     }
   })
+
+  $(document).on("change", "#File1FlXlearn", function () {
+    var _URL = window.URL;
+    var file, img;
+    if ((file = this.files[0])) {
+        img = new Image();
+        img.onload = function () {
+            //alert("Width:" + this.width + "   Height: " + this.height);
+            width=this.width;
+            height=this.height;
+            };
+            img.src = _URL.createObjectURL(file);
+    }
+  })
+
   }  
+  
 
   
 
@@ -418,8 +449,16 @@ list.get().then(l => {
 
 function UpdateFLXLearning(itemid){
   console.log(LGUID);
+  
   if($('#File1FLXlearnEdit').prop('files').length > 0){
     var Editfile =$('#File1FLXlearnEdit').prop('files')[0];
+    var ht=parseInt(heightedit),wt=parseInt(widthedit);
+    if(ht > 500 || wt > 500)
+    {
+      $("#LearningUpdateFileEmpty").html(`<p class="text-danger m-0">Height and Width must not exceed 500px</p>`)
+    }
+else{
+
     sp.web.getFolderByServerRelativeUrl(`/sites/${SiteName}/SiteAssets/Lists/${LGUID}`).files
   .add(Editfile.name, Editfile, true).then((fileItem)=>{
     sp.web.lists.getByTitle("FLXLearning").items.getById(parseInt(itemid)).update({
@@ -435,6 +474,8 @@ function UpdateFLXLearning(itemid){
       AlertMessage("<div class='alertfy-success'>Record updated successfully</div>");
     })
   })
+
+}
   }else{
     sp.web.lists.getByTitle("FLXLearning").items.getById(parseInt(itemid)).update({
       Title: $("#TitleFLXlearning").val(),
@@ -448,17 +489,24 @@ function UpdateFLXLearning(itemid){
         AlertMessage("<div class='alertfy-success'>Record updated successfully</div>");
       });
   }
-  
 }  
+
 function AddFLXLearning() {
 console.log(LGUID);
-
-
 if($('#File1FlXlearn').prop('files').length == 0){
 $("#LearningAddFileEmpty").html(`<p class="text-danger m-0">Please Choose a File</p>`)
-}else {
+}
+else if($('#File1FlXlearn').prop('files').length > 0)
+{
+  var ht=parseInt(height),wt=parseInt(width);
+  if(ht > 500 || wt > 500)
+  {
+  $("#LearningAddFileEmpty").html(`<p class="text-danger m-0">Height and Width must not exceed 500px</p>`)
+  }
+else {
 //uploadfile
-var file =$('#File1FlXlearn').prop('files')[0];  
+var file =$('#File1FlXlearn').prop('files')[0];
+  
 sp.web.getFolderByServerRelativeUrl(`/sites/${SiteName}/SiteAssets/Lists/${LGUID}`).files
  .add(file.name, file, true)
  .then((fileItem) => { 
@@ -477,7 +525,7 @@ sp.web.getFolderByServerRelativeUrl(`/sites/${SiteName}/SiteAssets/Lists/${LGUID
  });
 });
 }
-  
+}
 }
 
 function DeleteFLXLearning(itemid){
