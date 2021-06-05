@@ -294,7 +294,12 @@ $(document).on('click','.editimageflxLearn',function(e){
  
 })
 $("#btnUpdateLearn").click(function(){
-    UpdateFLXLearning(itemid);
+  if ( mandatoryforUpdateFLXLearning()) {
+    UpdateFLXLearning(itemid);   
+  } else {
+    console.log("All fileds not filled");
+  }
+      
   })
   
   $("#btnDeleteLearn").click(function(){
@@ -304,7 +309,14 @@ $("#btnUpdateLearn").click(function(){
   // $(document).on('click','#btnSubmitLearnFLXLearn',function(){
   //   AddFLXLearning();
   // })
-  $("#btnSubmitLearnFLXLearn").click(()=>{AddFLXLearning();})
+  $("#btnSubmitLearnFLXLearn").click(()=>{
+    if (mandatoryforAddFLXLearning()) {
+      AddFLXLearning();   
+    } else {
+      console.log("All fileds not filled");
+    }  
+    // AddFLXLearning();
+  })
  
   $(document).on("change", "#File1FLXlearnEdit", function () {
     var _URL = window.URL;
@@ -554,6 +566,41 @@ function AlertMessage(Message) {
     .setHeader("<div class='fw-bold alertifyConfirmation'>Confirmation</div>")
     .set("closable", false);
 }  
+function mandatoryforAddFLXLearning(){
+  var isAllvalueFilled = true;
+  if (!$("#TitleFlXlearn").val()) {
+    alertify.error("Please Enter the Title");
+    isAllvalueFilled = false;
+  } else if (!$("#URLFlXlearn").val()) {
+    alertify.error("Please Enter the url ");
+    isAllvalueFilled = false;
+  }
+  else if (!$("#File1FlXlearn").val()) {
+    alertify.error("Please upload file");
+    isAllvalueFilled = false;  
+  }   
+  return isAllvalueFilled;
+}
+
+function mandatoryforUpdateFLXLearning() {
+  var isAllvalueFilled = true;  
+  if (!$("#TitleFLXlearning").val()) {
+    alertify.error("Please Enter the Title");
+    isAllvalueFilled = false;
+  } else if (!$("#URLFLXlearning").val()) {
+    alertify.error("Please Enter the url ");
+    isAllvalueFilled = false;
+  }
+  // else if (!$("#File1FLXlearnEdit").val()) {
+  //   alertify.error("Please upload file");
+  //   isAllvalueFilled = false;  
+  // }       
+  return isAllvalueFilled;
+}
+
+
+ 
+
 
 
 // export const HelloWorld = () => {

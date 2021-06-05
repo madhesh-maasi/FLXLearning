@@ -262,10 +262,11 @@ button.ajs-button.ajs-ok {
   min-height: 72.3vh; 
 }
 .learning-modal-dialog .modal-body {
-  padding: 1rem 2rem !important;
+  padding: 0rem 2rem !important;
+  margin-top: -6px;
 }
 /* .add-link{
-  width: 9rem;
+  width: 9rem;   
   min-height: 10.5rem;
   background: #ffff; 
    background: #fff; 
