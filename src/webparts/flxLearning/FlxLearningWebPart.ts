@@ -49,6 +49,9 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
     
     
     this.domElement.innerHTML = `   
+    <div class="loader-section" style="display:none"> 
+    <div class="loader"></div>  
+    </div></div>
 
    <div class="flx-learning-section">
              
@@ -384,6 +387,7 @@ $("#btnUpdateLearn").click(function(){
   }
 }
 function FetchFLXLearning() {
+  $(".loader-section").show();
   
   let list = sp.web.lists.getByTitle("FLXLearning");
 list.get().then(l => {
@@ -434,9 +438,11 @@ list.get().then(l => {
       element.innerHTML = html;
 
     })
+    $(".loader-section").hide();
 } 
 
  function GetFLXLearning(){
+  $(".loader-section").show();
   $("#LearningEditFile").show()
  sp.web.lists.getByTitle("FLXLearning").items.getById(parseInt(itemid)).get().then((items: any[]) => 
   {
@@ -456,10 +462,12 @@ list.get().then(l => {
   console.log(items);
   
  })
+ $(".loader-section").hide();
  
 }
 
 function UpdateFLXLearning(itemid){
+  $(".loader-section").show();
   console.log(LGUID);
   
   if($('#File1FLXlearnEdit').prop('files').length > 0){
@@ -501,9 +509,11 @@ else{
         AlertMessage("<div class='alertfy-success'>Record updated successfully</div>");
       });
   }
+  $(".loader-section").hide();
 }  
 
 function AddFLXLearning() {
+  $(".loader-section").show();
 console.log(LGUID);
 if($('#File1FlXlearn').prop('files').length == 0){
 $("#LearningAddFileEmpty").html(`<p class="text-danger m-0">Please Choose a File</p>`)
@@ -538,12 +548,14 @@ sp.web.getFolderByServerRelativeUrl(`/sites/${SiteName}/SiteAssets/Lists/${LGUID
 });
 }
 }
+$(".loader-section").hide();
 }
 
 function DeleteFLXLearning(itemid){
+  $(".loader-section").show();
   sp.web.lists.getByTitle("FLXLearning").items.getById((parseInt(itemid))).delete().then(()=>{location.reload()}).catch((error)=>{alert("Error Occured");})
   // AlertMessage("Record Deleted successfully");
-
+  $(".loader-section").hide();
 }
  
  
@@ -557,6 +569,7 @@ function AlertMessage(Message) {
 
       onok: function () {
         window.location.href = "#";
+        $(".loader-section").hide();
         location.reload();
 
         //window.location.href = "#";
