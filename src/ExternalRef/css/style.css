@@ -310,7 +310,7 @@ button.ajs-button.ajs-ok {
   background-color: #fff;
   z-index: 1000;
 }
-.loader-section {
+/* .loader-section {
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -321,7 +321,7 @@ button.ajs-button.ajs-ok {
   align-items: center;
   background-color: #fff;
   z-index: 1000;
-}
+} */
 .loader {
   position: relative;
   width: 8rem;
@@ -342,7 +342,7 @@ button.ajs-button.ajs-ok {
 }
 .loader:after {
   top: 50%;
-  bottom: 0;
+  bottom: 0;  
   animation-delay: 0.25s;
 }
 @keyframes loader-12 {

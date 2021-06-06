@@ -51,7 +51,7 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
     this.domElement.innerHTML = `   
     <div class="loader-section" style="display:none"> 
     <div class="loader"></div>  
-    </div></div>
+    </div>
 
    <div class="flx-learning-section">
              
@@ -443,7 +443,8 @@ list.get().then(l => {
 
  function GetFLXLearning(){
   $(".loader-section").show();
-  $("#LearningEditFile").show()
+  $("#LearningEditFile").show();
+ 
  sp.web.lists.getByTitle("FLXLearning").items.getById(parseInt(itemid)).get().then((items: any[]) => 
   {
     const itemImage = JSON.parse(items["Image"]) || {};
@@ -463,11 +464,10 @@ list.get().then(l => {
   
  })
  $(".loader-section").hide();
- 
 }
 
 function UpdateFLXLearning(itemid){
-  $(".loader-section").show();
+  $(".loader-section").show();   
   console.log(LGUID);
   
   if($('#File1FLXlearnEdit').prop('files').length > 0){
