@@ -26,6 +26,8 @@ var alertify: any = require("../../ExternalRef/js/alertify.min.js");
  let SiteName = "";
  let SelectedImage = "";
  var width="",height="",widthedit="",heightedit="";
+ var FilteredAdmin =[];
+var currentuser = "";
 export interface IFlxLearningWebPartProps {
   description: string;
 }
@@ -42,6 +44,7 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
      
   public render(): void {  
     listUrl = this.context.pageContext.web.absoluteUrl;
+    currentuser = this.context.pageContext.user.email;
     var siteindex = listUrl.toLocaleLowerCase().indexOf("sites");
     listUrl = listUrl.substr(siteindex - 1) + "/Lists/";
     SiteName = listUrl.split("/")[2]  
@@ -51,7 +54,8 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
     this.domElement.innerHTML = ` 
     <div class="viewallannounce text-end">
     <!-- <button class="btn btn-outline-theme  rounded-0"  data-bs-toggle="modal" data-bs-target="#exampleModalscrolllearn">View All</button> -->
-    <a href="#" class="info"  class="" data-bs-toggle="modal" data-bs-target="#exampleModalscrolllearnone" >View All</a>
+    <a href="#" class="info"  class="color-info" id="ViewAll">View All</a> 
+    <a href="#" class="info"  class="color-info" id="ShowVisible">Show Visible</a> 
     </div>   
     <div class="loader-section" style="display:none"> 
     <div class="loader"></div>  
@@ -329,8 +333,15 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
   </div>
 </div>
 `;
-FetchFLXLearning();
-
+getadminfromsite();
+      $("#ShowVisible").hide();
+      $("#ViewAll").show();
+      $("#ViewAll").click(()=>{
+        FetchFLXLearningAll();
+      });
+      $("#ShowVisible").click(()=>{
+        FetchFLXLearning();
+      });
     
 
 $("#learningDeleteModal").click(()=>{
@@ -435,9 +446,34 @@ $("#btnUpdateLearn").click(function(){
     };
   }
 }
+async function getadminfromsite() {
+  $(".loader-section").show();
+  var AdminInfo = [];
+  await sp.web.siteGroups
+    .getByName("FLX Admins")
+    .users.get()
+    .then(function (result) {
+      for (var i = 0; i < result.length; i++) {
+        AdminInfo.push({
+          Title: result[i].Title,
+          ID: result[i].Id,
+          Email: result[i].Email,
+        });
+      }
+      FilteredAdmin = AdminInfo.filter((admin)=>{return (admin.Email == currentuser)});
+      console.log(FilteredAdmin);
+      FetchFLXLearning();
+    })
+    .catch(function (err) {
+      alert("Group not found: " + err);
+      $(".loader-section").hide();
+    });
+    $(".loader-section").hide();
+}
 function FetchFLXLearning() {
   $(".loader-section").show();
-  
+  $("#ShowVisible").hide();
+  $("#ViewAll").show();
   let list = sp.web.lists.getByTitle("FLXLearning");
 list.get().then(l => {
     console.log("List Id: " + l.Id);
@@ -451,6 +487,8 @@ list.get().then(l => {
     .then((items: any[]) => {
       console.log(items);
       
+      if (FilteredAdmin.length>0) 
+        {
       for (var i = 0; i < items.length; i++) {
         const item = items[i];
         const itemImage = JSON.parse(item.Image) || {};
@@ -474,17 +512,43 @@ list.get().then(l => {
       }   
 
       if(items.length>=0){
-        html+=`<div class="card text-center flxlearncursor m-2" style="width: 9rem; height:10.5rem ;border-radius:0">
+        html+=`<div class="card text-center flxlearncursor m-2" id="add-link" style="width: 9rem; height:10.5rem ;border-radius:0">
         <div class="card-body my-4">
         <span class="learn-add-icon " data-bs-toggle="modal" data-bs-target="#staticBackdroptwo"></span>
         <p class="learn-title my-2">Add Link</p>
         </div>
       </div>`
       }   
-
-
-      var element = document.getElementById("learnedit");
+          var element = document.getElementById("learnedit");
+          element.innerHTML = html;
+        }
+        else{
+          for (var i = 0; i < items.length; i++) {
+            const item = items[i];
+            const itemImage = JSON.parse(item.Image) || {};
+            const serverUrl = itemImage.serverUrl || "";
+            const imageUrl = itemImage.serverRelativeUrl || "";
+              
+            if (item.OpeningNewTab === true) {
+              html += `<div class = "q-link m-2 text-center p-2"><div class="iconaddlearn text-end py-1 px-2">
+                <span class="editimageflx" data-bs-toggle="modal" data-bs-target="#staticBackdropone" data-id ="${item.ID}"></span></div>
+                <a data-interception="off" href="${item.URL}" target="_blank"><img class="q-link-img" src="${serverUrl}${imageUrl}" alt="img"/></a><a data-interception="off" class="" href="${item.URL}" target="_blank">
+                <div class="q-link-title">${item.Title}</div></a></div>`
+              // console.log(items)
+            }
+            else { 
+              html += `<div class = "q-link m-2 text-center p-2"><div class="iconaddlearn text-end py-1 px-2">
+              <span class="editimageflx" data-bs-toggle="modal" data-bs-target="#staticBackdropone" data-id="${item.ID}"></span>
+              </div>
+                <a href="${item.URL}"><img class="q-link-img" src="${serverUrl}${imageUrl}" alt="img"/></a><a class="" href="${item.URL}">
+                <div class="q-link-title ">${item.Title}</div></a></div>`
+            }             
+          }   
+          var element = document.getElementById("learnedit");
       element.innerHTML = html;
+          $("#ViewAll").hide();
+          $("#ShowVisible").hide();  
+        }
 
     })
     $(".loader-section").hide();
@@ -660,34 +724,59 @@ function mandatoryforUpdateFLXLearning() {
   return isAllvalueFilled;
 }
 
+function FetchFLXLearningAll() {
+  $(".loader-section").show();
+  $("#ShowVisible").show();
+  $("#ViewAll").hide();
+  let list = sp.web.lists.getByTitle("FLXLearning");
+list.get().then(l => {
+    console.log("List Id: " + l.Id);
+    LGUID=l.Id;
+}); 
+  var html = "";
+  
+  sp.web.lists
+    .getByTitle("FLXLearning")
+    .items.select("*","Title", "URL", "OpeningNewTab", "Visible", "Image").getAll()
+    .then((items: any[]) => {
+      console.log(items);
+      
+      for (var i = 0; i < items.length; i++) {
+        const item = items[i];
+        const itemImage = JSON.parse(item.Image) || {};
+        const serverUrl = itemImage.serverUrl || "";
+        const imageUrl = itemImage.serverRelativeUrl || "";
+          
+        if (item.OpeningNewTab === true) {
+          html += `<div class = "q-link m-2 text-center p-2"><div class="iconaddlearn text-end py-1 px-2">
+            <span class="editimageflxLearn" data-bs-toggle="modal" data-bs-target="#staticBackdropone" data-id ="${item.ID}"></span></div>
+            <a data-interception="off" href="${item.URL}" target="_blank"><img class="q-link-img" src="${serverUrl}${imageUrl}" alt="img"/></a><a data-interception="off" class="" href="${item.URL}" target="_blank">
+            <div class="q-link-title">${item.Title}</div></a></div>`
+          // console.log(items)
+        }
+        else { 
+          html += `<div class = "q-link m-2 text-center p-2"><div class="iconaddlearn text-end py-1 px-2">
+          <span class="editimageflxLearn" data-bs-toggle="modal" data-bs-target="#staticBackdropone" data-id="${item.ID}"></span>
+          </div>
+            <a href="${item.URL}"><img class="q-link-img" src="${serverUrl}${imageUrl}" alt="img"/></a><a class="" href="${item.URL}">
+            <div class="q-link-title ">${item.Title}</div></a></div>`
+        }             
+      }   
 
- 
+      if(items.length>=0){
+        html+=`<div class="card text-center flxlearncursor m-2" style="width: 9rem; height:10.5rem ;border-radius:0">
+        <div class="card-body my-4">
+        <span class="learn-add-icon " data-bs-toggle="modal" data-bs-target="#staticBackdroptwo"></span>
+        <p class="learn-title my-2">Add Link</p>
+        </div>
+      </div>`
+      }   
 
 
+      var element = document.getElementById("learnedit");
+      element.innerHTML = html;
+      
 
-// export const HelloWorld = () => {
-
-//   const uploadFile = async (evt) => {
-
-//     const file: File = evt.target.files[0];
-
-//     // upload to the root folder of site assets in this demo
-//     const assets = await sp.web.lists.ensureSiteAssetsLibrary();
-//     const fileItem = await assets.rootFolder.files.add(file.name, file, true);
-
-//     // bare minimum; probably you'll want other properties as well
-//     const img = {
-//       "serverRelativeUrl": fileItem.data.ServerRelativeUrl,
-//     };
-
-//     // create the item, stringify json for image column
-//     await sp.web.lists.getByTitle("YourListWithImageColumn").items.add({
-//       Title: "Hello",
-//       YourImageColumn: JSON.stringify(img)
-//     });
-//   };
-
-//   return (<div>
-//     <input type='file' onChange={uploadFile} />
-//   </div>);
-// };
+    })
+    $(".loader-section").hide();
+}
