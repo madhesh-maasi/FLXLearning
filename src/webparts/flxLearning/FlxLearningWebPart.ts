@@ -37,19 +37,25 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
       sp.setup({
         spfxContext: this.context
       });
-    });
+    });  
   }
-
+     
   public render(): void {  
     listUrl = this.context.pageContext.web.absoluteUrl;
     var siteindex = listUrl.toLocaleLowerCase().indexOf("sites");
     listUrl = listUrl.substr(siteindex - 1) + "/Lists/";
-    SiteName = listUrl.split("/")[2]
-    console.log(SiteName);
+    SiteName = listUrl.split("/")[2]  
+    console.log(SiteName);  
+     
     
-    
-    this.domElement.innerHTML = `   
-
+    this.domElement.innerHTML = ` 
+    <div class="viewallannounce text-end">
+    <!-- <button class="btn btn-outline-theme  rounded-0"  data-bs-toggle="modal" data-bs-target="#exampleModalscrolllearn">View All</button> -->
+    <a href="#" class="info"  class="" data-bs-toggle="modal" data-bs-target="#exampleModalscrolllearnone" >View All</a>
+    </div>   
+    <div class="loader-section" style="display:none"> 
+    <div class="loader"></div>  
+    </div>      
    <div class="flx-learning-section">
              
    <!-- <div class="addiconlearn"> 
@@ -103,9 +109,9 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
        
       
       <div class="modal-body  modalbody-flexlearn">
-      <div class="row align-items-center my-3"><div class="col-4">Title</div><div class="col-1">:</div><div class="col-7">
+      <div class="row align-items-center my-3"><div class="col-4 titleflxlearingman">Title</div><div class="col-1">:</div><div class="col-7">
       <input type="text" class="form-control rounded-0" id="TitleFLXlearning" aria-describedby=""></div></div>
-      <div class="row align-items-center my-3"><div class="col-4">Url</div><div class="col-1">:</div><div class="col-7">
+      <div class="row align-items-center my-3"><div class="col-4 titleflxlearingman">Url</div><div class="col-1">:</div><div class="col-7">
       <input type="text" class="form-control rounded-0" id="URLFLXlearning" value="" aria-describedby=""></div></div>
 
      <!-- <div class="row align-items-center my-3"><div class="col-4">OpeningNewTab</div>
@@ -142,7 +148,7 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
 </div> 
 </div>
 </div>
-      <div class="row align-items-start my-3"><div class="col-4">Image</div><div class="col-1">:</div><div class="col-7">
+      <div class="row align-items-start my-3"><div class="col-4 titleflxlearingman">Image</div><div class="col-1">:</div><div class="col-7">
        <input type="file" class="form-control-file custom-life-learn" class="mt-1" id="File1FLXlearnEdit" accept="image/*">
        <div id="LearningUpdateFileEmpty"></div>
        <div id="LearningEditFile"></div>
@@ -189,8 +195,8 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
        
       
       <div class="modal-body">
-      <div class="row align-items-center my-3"><div class="col-4">Title</div><div class="col-1">:</div><div class="col-7"><input type="text" class="form-control rounded-0" id="TitleFlXlearn" aria-describedby=""></div></div>
-      <div class="row align-items-center my-3"><div class="col-4">Url</div><div class="col-1">:</div><div class="col-7"><input type="text" class="form-control rounded-0" id="URLFlXlearn" value="" aria-describedby=""></div></div>
+      <div class="row align-items-center my-3"><div class="col-4 titleflxlearingman">Title</div><div class="col-1">:</div><div class="col-7"><input type="text" class="form-control rounded-0" id="TitleFlXlearn" aria-describedby=""></div></div>
+      <div class="row align-items-center my-3"><div class="col-4 titleflxlearingman">Url</div><div class="col-1">:</div><div class="col-7"><input type="text" class="form-control rounded-0" id="URLFlXlearn" value="" aria-describedby=""></div></div>
 
      <!-- <div class="row align-items-center my-3"><div class="col-4">OpeningNewTab</div><div class="col-1">:</div>
       <div class="col-7">
@@ -223,7 +229,7 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
 </div> 
 </div>
 </div>
-      <div class="row align-items-start my-3"><div class="col-4">Image</div><div class="col-1">:</div><div class="col-7"> 
+      <div class="row align-items-start my-3"><div class="col-4 titleflxlearingman">Image</div><div class="col-1">:</div><div class="col-7"> 
       <input type="file" class="form-control-file custom-life-learn" class="mt-1" id="File1FlXlearn"  accept="image/*">
       <div id="LearningAddFileEmpty"></div>
       </div></div>
@@ -276,6 +282,52 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
   </div>
 </div>
 <!-- Delete Modal -->
+
+
+<!---viewall popup -->
+<!---viewall popup -->   
+  
+<div class="modal fade" id="exampleModalscrolllearn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog   modal-dialog-scrollable"">  
+    <div class="modal-content rounded-0">
+      <div class="modal-header">      
+        <h5 class="modal-title fw-bold w-100 text-center" id="exampleModalLabel">FLX Learning</h5>
+    <!--   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>  -->
+      </div>     
+      <div class="modal-body viewallmodal">    
+      <div class="viewallanounce"> 
+      <ul class="list-unstyled">   
+                 <li class="d-flex align-items-center row mx-1 my-3">
+                 <span class="addlearn col-1 addiconflxlearn"></span><a href="#" class="col-8 ">Test Data</a>
+                 <span class="icon-edit-announce col-2 pencileditvis"></span>
+                 </li>
+                 <li class="d-flex align-items-center row mx-1 my-3">
+                 <span class="addlearn col-1 addiconflxlearn"></span><a href="#" class="col-8 ">Test Data</a>
+                 <span class="icon-edit-announce col-2 pencileditvis"></span>
+                 </li>
+                 <li class="d-flex align-items-center row mx-1 my-3">
+                 <span class="addlearn col-1 addiconflxlearn"></span><a href="#" class="col-8 ">Test Data</a>
+                 <span class="icon-edit-announce col-2 pencileditvis"></span>
+                 </li>
+                 <li class="d-flex align-items-center row mx-1 my-3">
+                 <span class="addlearn col-1 addiconflxlearn"></span><a href="#" class="col-8 ">Test Data</a>
+                 <span class="icon-edit-announce col-2 pencileditvis"></span>
+                 </li>
+                 <li class="d-flex align-items-center row mx-1 my-3">
+                 <span class="addlearn col-1 addiconflxlearn"></span><a href="#" class="col-8 ">Test Data</a>
+                 <span class="icon-edit-announce col-2 pencileditvis"></span>
+                 </li>   
+                 </ul> 
+         
+      </div>     
+      </div>
+      <div class="modal-footer"> 
+        <button type="button" class="btn btn-sm btn-secondary rounded-0" data-bs-dismiss="modal" id="btnclose">Close</button>
+        <button type="button" class="btn btn-sm btn-theme rounded-0" id="btnsubmit">Submit</button> 
+      </div>        
+    </div>
+  </div>
+</div>
 `;
 FetchFLXLearning();
 
@@ -294,7 +346,12 @@ $(document).on('click','.editimageflxLearn',function(e){
  
 })
 $("#btnUpdateLearn").click(function(){
-    UpdateFLXLearning(itemid);
+  if ( mandatoryforUpdateFLXLearning()) {
+    UpdateFLXLearning(itemid);   
+  } else {
+    console.log("All fileds not filled");
+  }
+      
   })
   
   $("#btnDeleteLearn").click(function(){
@@ -304,7 +361,14 @@ $("#btnUpdateLearn").click(function(){
   // $(document).on('click','#btnSubmitLearnFLXLearn',function(){
   //   AddFLXLearning();
   // })
-  $("#btnSubmitLearnFLXLearn").click(()=>{AddFLXLearning();})
+  $("#btnSubmitLearnFLXLearn").click(()=>{
+    if (mandatoryforAddFLXLearning()) {
+      AddFLXLearning();   
+    } else {
+      console.log("All fileds not filled");
+    }  
+    // AddFLXLearning();
+  })
  
   $(document).on("change", "#File1FLXlearnEdit", function () {
     var _URL = window.URL;
@@ -372,6 +436,7 @@ $("#btnUpdateLearn").click(function(){
   }
 }
 function FetchFLXLearning() {
+  $(".loader-section").show();
   
   let list = sp.web.lists.getByTitle("FLXLearning");
 list.get().then(l => {
@@ -422,10 +487,13 @@ list.get().then(l => {
       element.innerHTML = html;
 
     })
+    $(".loader-section").hide();
 } 
 
  function GetFLXLearning(){
-  $("#LearningEditFile").show()
+  $(".loader-section").show();
+  $("#LearningEditFile").show();
+ 
  sp.web.lists.getByTitle("FLXLearning").items.getById(parseInt(itemid)).get().then((items: any[]) => 
   {
     const itemImage = JSON.parse(items["Image"]) || {};
@@ -444,10 +512,11 @@ list.get().then(l => {
   console.log(items);
   
  })
- 
+ $(".loader-section").hide();
 }
 
 function UpdateFLXLearning(itemid){
+  $(".loader-section").show();   
   console.log(LGUID);
   
   if($('#File1FLXlearnEdit').prop('files').length > 0){
@@ -489,9 +558,11 @@ else{
         AlertMessage("<div class='alertfy-success'>Record updated successfully</div>");
       });
   }
+  $(".loader-section").hide();
 }  
 
 function AddFLXLearning() {
+  $(".loader-section").show();
 console.log(LGUID);
 if($('#File1FlXlearn').prop('files').length == 0){
 $("#LearningAddFileEmpty").html(`<p class="text-danger m-0">Please Choose a File</p>`)
@@ -526,12 +597,14 @@ sp.web.getFolderByServerRelativeUrl(`/sites/${SiteName}/SiteAssets/Lists/${LGUID
 });
 }
 }
+$(".loader-section").hide();
 }
 
 function DeleteFLXLearning(itemid){
+  $(".loader-section").show();
   sp.web.lists.getByTitle("FLXLearning").items.getById((parseInt(itemid))).delete().then(()=>{location.reload()}).catch((error)=>{alert("Error Occured");})
   // AlertMessage("Record Deleted successfully");
-
+  $(".loader-section").hide();
 }
  
  
@@ -545,6 +618,7 @@ function AlertMessage(Message) {
 
       onok: function () {
         window.location.href = "#";
+        $(".loader-section").hide();
         location.reload();
 
         //window.location.href = "#";
@@ -554,6 +628,41 @@ function AlertMessage(Message) {
     .setHeader("<div class='fw-bold alertifyConfirmation'>Confirmation</div>")
     .set("closable", false);
 }  
+function mandatoryforAddFLXLearning(){
+  var isAllvalueFilled = true;
+  if (!$("#TitleFlXlearn").val()) {
+    alertify.error("Please Enter the Title");
+    isAllvalueFilled = false;
+  } else if (!$("#URLFlXlearn").val()) {
+    alertify.error("Please Enter the url ");
+    isAllvalueFilled = false;
+  }
+  else if (!$("#File1FlXlearn").val()) {
+    alertify.error("Please upload file");
+    isAllvalueFilled = false;  
+  }   
+  return isAllvalueFilled;
+}
+
+function mandatoryforUpdateFLXLearning() {
+  var isAllvalueFilled = true;  
+  if (!$("#TitleFLXlearning").val()) {
+    alertify.error("Please Enter the Title");
+    isAllvalueFilled = false;
+  } else if (!$("#URLFLXlearning").val()) {
+    alertify.error("Please Enter the url ");
+    isAllvalueFilled = false;
+  }
+  // else if (!$("#File1FLXlearnEdit").val()) {
+  //   alertify.error("Please upload file");
+  //   isAllvalueFilled = false;  
+  // }       
+  return isAllvalueFilled;
+}
+
+
+ 
+
 
 
 // export const HelloWorld = () => {
