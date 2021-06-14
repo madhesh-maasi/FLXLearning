@@ -310,6 +310,9 @@ button.ajs-button.ajs-ok {
 .flxlearncursor .learn-add-icon {
   cursor: pointer;
 }
+/* .flxlearncursor{
+  margin-top:1.8rem!important;
+} */
 .loader-section {
   width: 100vw;
   height: 100vh;
@@ -453,4 +456,15 @@ button.ajs-button.ajs-ok {
   background-color: #011e41!important;
   color: white !important;
 
+}
+.newlearn{
+  color: #4BB543;
+  left: 8.3rem;
+    position: absolute;
+    font-size: .8rem;
+    top: -4px;
+    font-weight: 500;
+}
+.newlrn{
+  position: relative;
 }
