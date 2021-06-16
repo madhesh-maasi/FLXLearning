@@ -57,7 +57,7 @@ export default class FlxLearningWebPart extends BaseClientSideWebPart<IFlxLearni
     <div class="viewallannounce text-end">
     <!-- <button class="btn btn-outline-theme  rounded-0"  data-bs-toggle="modal" data-bs-target="#exampleModalscrolllearn">View All</button> -->
     <a href="#" class="info"  class="color-info" id="ViewAll">View All</a> 
-    <a href="#" class="info"  class="color-info" id="ShowVisible">Show Visible</a> 
+    <a href="#" class="info"  class="color-info" id="ShowVisible">End User View</a> 
     </div>   
     <div class="loader-section" style="display:none"> 
     <div class="loader"></div>  
@@ -498,7 +498,7 @@ list.get().then(l => {
   
   sp.web.lists
     .getByTitle("FLXLearning")
-    .items.select("*","Title", "URL", "OpeningNewTab", "Visible", "Image").filter("Visible eq '1'").getAll()
+    .items.select("*","Title", "URL", "OpeningNewTab", "Visible", "Image").filter("Visible eq '1'").orderBy("Modified",false).get()
     .then((items: any[]) => {
       console.log(items);
       
@@ -775,7 +775,7 @@ list.get().then(l => {
   
   sp.web.lists
     .getByTitle("FLXLearning")
-    .items.select("*","Title", "URL", "OpeningNewTab", "Visible", "Image").getAll()
+    .items.select("*","Title", "URL", "OpeningNewTab", "Visible", "Image").orderBy("Modified",false).get()
     .then((items: any[]) => {
       console.log(items);
       
