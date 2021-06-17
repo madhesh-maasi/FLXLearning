@@ -449,7 +449,6 @@ $("#btnUpdateLearn").click(function(){
   }
 }
 async function getadminfromsite() {
-  $(".loader-section").show();
 
 
   var bag=[];
@@ -479,14 +478,11 @@ async function getadminfromsite() {
     })
     .catch(function (err) {
       alert("Group not found: " + err);
-      $(".loader-section").hide();
     });
-    $(".loader-section").hide();
 
 
 }
 function FetchFLXLearning() {
-  $(".loader-section").show();
   $("#ShowVisible").hide();
   $("#ViewAll").show();
   let list = sp.web.lists.getByTitle("FLXLearning");
@@ -587,11 +583,9 @@ list.get().then(l => {
  }
 
     })
-    $(".loader-section").hide();
 } 
 
  function GetFLXLearning(){
-  $(".loader-section").show();
   $("#LearningEditFile").show();
  
  sp.web.lists.getByTitle("FLXLearning").items.getById(parseInt(itemid)).get().then((items: any[]) => 
@@ -614,7 +608,6 @@ list.get().then(l => {
   
  })
  
- $(".loader-section").hide();
 }
 
 function UpdateFLXLearning(itemid){
@@ -763,7 +756,6 @@ function mandatoryforUpdateFLXLearning() {
 }
 
 function FetchFLXLearningAll() {
-  $(".loader-section").show();
   $("#ShowVisible").show();
   $("#ViewAll").hide();
   let list = sp.web.lists.getByTitle("FLXLearning");
@@ -837,5 +829,4 @@ list.get().then(l => {
       
 
     })
-    $(".loader-section").hide();
 }
